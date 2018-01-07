@@ -61,9 +61,6 @@ public class LocationService extends Service {
             @Override
             public void onLocationChanged(final Location location) {
 
-
-
-
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("phone",sharedPreferences.getString("phone",""));
@@ -158,11 +155,4 @@ public class LocationService extends Service {
 
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if(locationListener != null){
-            locationManager.removeUpdates(locationListener);
-        }
-    }
 }

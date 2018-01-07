@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,10 +77,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             editor.putString("phone",response.getString("phone") );
+                            Log.d("returnnum",response.getString("phone") );
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         editor.apply();
+                        editor.commit();
                         Intent intent;
                         intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
